@@ -1,0 +1,29 @@
+import csv
+import json
+import os
+
+def csv_to_json(csv_path="data.csv", json_path="output.json"):
+    """Converts a CSV file into a formatted JSON file."""
+    try:
+        if not os.path.exists(csv_path):
+            print(f"[-] CSV file '{csv_path}' not found.")
+            return False
+        data_list = []
+        with open(csv_path, mode="r", encoding="utf-8") as csv_file:
+            reader = csv.DictReader(csv_file)
+            for row in reader:
+                data_list.append(row)
+        with open(json_path, mode="w", encoding="utf-8") as json_file:
+            json.dump(data_list, json_file, indent=4, ensure_ascii=False)
+
+        print(f"[+] Successfully converted '{csv_path}' to '{json_path}'.")
+        return True
+    except Exception as e:
+        print(f"[-] Conversion error: {e}")
+        return False
+if name == "main":
+    csv_to_json()
+#ALL THIS SCRIPT DOES IS COVERTING CSV TO JSON AND CLEANING TRASH
+#HOW TO RUN
+#INSTALL PYTHON & CSV & JSON & OS LIBLARIES
+#OR JUST TEXT ME, WILL BE DONE FOR 25-100$. MY TELEGRAM: @Myhamed91
